@@ -29,3 +29,7 @@ router.wipe() # This is an optional step, but it will wipe any training data alr
 router.train(trainingData, 20) # This will train it. The number at the end is the batch size, which is the amount of concurrent requests at a time.
 ```
 This will allow us to now train the router based on our added data.
+
+Now, there's 3 ways that we can actually route requests, now that we've trained everything, etc.
+- **route** - This is the simplest (and cheapest (and fastest)) way to route questions. At about 18 tokens per question, you can get around half a million requests routed per dollar (Token price: 0.0001/1k). This embeds the questions and runs it against the other embeddings that we have.
+- 

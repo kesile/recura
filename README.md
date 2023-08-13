@@ -1,56 +1,5 @@
 # Tear - Trainable, autonomous, efficient routing.
 Tear is a simple tool that allows you to easily (<10 lines of code) and cheaply (500,000/1$) control the flow of information through LLM chains via automated classification. It provides routing via two methods, LLMs and Embeddings. Furthermore, you can train an LLM on a set of question and use embeddings thereafter. Let's demonstrate this by creating a simple, easy router for movie related questions.
-## Use Case Examples
-Here are some example cases in which this will be useful. Example data will be provided. For an annotated implementation, see the Example Set-up that's below. As always, this is not an exhaustive list, and is rather just to make you think.
-### Navigational Chatbot
-
-A while ago, one of the projects I was building was a navigational chatbot. It needed to be able to identify the question to direct it to various handling systems. 
-```python
-buckets = {
-    "general" : "General questions that don't fit any of the others.",
-    "navigation" : "Questions about the navigation of a place (e.g. How do I get to 7/11? How do I get from FamilyMart to Mia C'bon?)",
-    "reviews" : "Questions about the reviews of a place (e.g. How is Din Tai Fung? Is Sushiro any good?)",
-    }
-
-trainingData = [
-    "How do I get to 7/11?",
-    # ... 99 more questions.
-    ] 
-```
-
-### Customer Support
-
-You can also use a system like this for department-routing for customer support queries. Here's an example.
-```python
-buckets = {
-    "it" : "Questions for the IT department (e.g. My laptop is broken.)",
-    "sales" : "Questions for the sales department (e.g. How can I buy this? What do your enterprise deals look like?)",
-    "cs" : "Questions for the customer support department (e.g. I need a refund, now.)",
-    "escalation" : "Situations that must be escalated immediately (e.g. I'm in an emergency.)",
-    }
-
-trainingData = [
-    "Do you guys do bulk discounts?",
-    # ... 99 more questions.
-    ] 
-```
-
-### Multi-docu-query
-
-You can also use a system like this for department-routing for customer support queries. Here's an example.
-```python
-buckets = {
-    "it" : "Questions for the IT department (e.g. My laptop is broken.)",
-    "sales" : "Questions for the sales department (e.g. How can I buy this? What do your enterprise deals look like?)",
-    "cs" : "Questions for the customer support department (e.g. I need a refund, now.)",
-    "escalation" : "Situations that must be escalated immediately (e.g. I'm in an emergency.)",
-    }
-
-trainingData = [
-    "Do you guys do bulk discounts?",
-    # ... 99 more questions.
-    ] 
-```
 
 ## Example Set-up / Movies
 ```python
@@ -94,3 +43,56 @@ while True:
     print("\n" + myRouter.route(query)["output"] + "\n")
 ```
 And with that, we have created a fully-functional router in about 10 lines of code.
+
+## Use Case Examples
+Here are some example cases in which this will be useful. Example data will be provided. For an annotated implementation, see the Example Set-up that's below. As always, this is not an exhaustive list, and is rather just to make you think.
+### Navigational Chatbot
+
+A while ago, one of the projects I was building was a navigational chatbot. It needed to be able to identify the question to direct it to various handling systems. 
+```python
+buckets = {
+    "general" : "General questions that don't fit any of the others.",
+    "navigation" : "Questions about the navigation of a place (e.g. How do I get to 7/11? How do I get from FamilyMart to Mia C'bon?)",
+    "reviews" : "Questions about the reviews of a place (e.g. How is Din Tai Fung? Is Sushiro any good?)",
+    }
+
+trainingData = [
+    "How do I get to 7/11?",
+    # ... 99 more questions.
+    ] 
+```
+
+### Customer Support
+
+You can also use a system like this for department-routing for customer support queries. Here's an example.
+```python
+buckets = {
+    "it" : "Questions for the IT department (e.g. My laptop is broken.)",
+    "sales" : "Questions for the sales department (e.g. How can I buy this? What do your enterprise deals look like?)",
+    "cs" : "Questions for the customer support department (e.g. I need a refund, now.)",
+    "escalation" : "Situations that must be escalated immediately (e.g. I'm in an emergency.)",
+    }
+
+trainingData = [
+    "Do you guys do bulk discounts?",
+    # ... 99 more questions.
+    ] 
+```
+
+### Multi-docu-query
+
+It can also be used as a means to control the flow of different document retrieval. For example, let's say we were building a ChatBot that was an expert on Apple's recent stock documents.
+```python
+buckets = {
+    "Q1" : "Q1 Earnings Report for Apple's stock",
+    "Q2" : "Q2 Earnings Report for Apple's stock",
+    "Q3" : "Q3 Earnings Report for Apple's stock",
+    "Q4" : "Q4 Earnings Report for Apple's stock",
+}
+
+trainingData = [
+    "What were the key highlights of Apple's Q1 earnings report?",
+    # ... 99 more questions.
+]
+```
+

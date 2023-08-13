@@ -1,12 +1,12 @@
 import openai, json
 from .cos import cos
 
-openai.api_key = "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"
+# openai.api_key = "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"
 
 def route(question, embed):
     auxillary = {}
 
-    with open("router//db//trainingData.json", "r") as json_file:
+    with open(r"router\db\trainingData.json", "r") as json_file:
             try:
                 data = json.load(json_file)
             except json.decoder.JSONDecodeError:
@@ -19,5 +19,6 @@ def route(question, embed):
         auxillary.update({similarity : question["output"]})
 
     auxillary = dict(sorted(auxillary.items(), reverse=True))
+    # print(auxillary)
     auxillary = list(auxillary.values())
-    return auxillary[0]
+    return auxillary[0], 200

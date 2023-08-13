@@ -9,7 +9,7 @@ def trainFile(file, instructions, chatFunction, embedFunction, batch_size):
         threads = []
 
         for i in range(iterator, min(iterator + batch_size, len(file))):
-            thread = threading.Thread(target=chatFunction, args=(file[i], instructions))
+            thread = threading.Thread(target=chatFunction, args=(file[i], instructions, True))
             threads.append(thread)
             thread.start()
 
@@ -21,8 +21,9 @@ def trainFile(file, instructions, chatFunction, embedFunction, batch_size):
 
         print(f"Epoch {1 + iterator//batch_size}/{(len(file) + batch_size - 1)//batch_size} ~ {smallCost}$")
         iterator += batch_size
+        code = 200
 
-    print(f"\nTraining Data Generated {cost}$")
+    return code, cost
     
 
 

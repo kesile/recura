@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = "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"
+# openai.api_key = "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"
 
 def embed(inp):
     response = openai.Embedding.create(

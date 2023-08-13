@@ -1,5 +1,5 @@
 import openai, time, os
-from router.inner import Router
+from .router.inner import Router
 
 class Tear:
     def __init__(self, api_key, organization = False):

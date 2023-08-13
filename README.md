@@ -35,9 +35,10 @@ Now, there's 3 ways that we can actually route requests, now that we've trained 
 - **manual** - This version has an LLM classify it. It's potentially useful for complex requests. At about 500 tokens when combining question and instructions, you can get around 1000 requests per dollar (Token price: 0.002/1k). This is not recommended for production use in most cases.
 - **routeLearn** - This version has an LLM classify it, while embedding it and adding it to the training data. It allows you to train your model and recursively improve it as users use it. Same price as *manual*.
 
-In our case, we will choose to just use simple and easy routing.
+In our case, we will choose to just use basic routing.
 ```python
 while True:
     query = input("~ ")
     print("\n" + myRouter.route(query)["output"] + "\n")
 ```
+And with that, we have created a fully-functional router in about 10 lines of code.

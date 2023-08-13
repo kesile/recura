@@ -24,9 +24,9 @@ trainingData = [
 ```
 We will now create our training data. It can just be a list of questions.
 ```python
-router.addBuckets(buckets) # This will add the buckets (categories) to the router as available options.
-router.wipe() # This is an optional step, but it will wipe any training data already written inside of the file.
-router.train(trainingData, 20) # This will train it. The number at the end is the batch size, which is the amount of concurrent requests at a time.
+myRouter.addBuckets(buckets) # This will add the buckets (categories) to the router as available options.
+myRouter.wipe() # This is an optional step, but it will wipe any training data already written inside of the file.
+myRouter.train(trainingData, 20) # This will train it. The number at the end is the batch size, which is the amount of concurrent requests at a time.
 ```
 This will allow us to now train the router based on our added data.
 
@@ -34,3 +34,10 @@ Now, there's 3 ways that we can actually route requests, now that we've trained 
 - **route** - This is the simplest (and cheapest (and fastest)) way to route questions. At about 18 tokens per question, you can get around half a million requests routed per dollar (Token price: 0.0001/1k). This embeds the questions and runs it against the other embeddings that we have.
 - **manual** - This version has an LLM classify it. It's potentially useful for complex requests. At about 500 tokens when combining question and instructions, you can get around 1000 requests per dollar (Token price: 0.002/1k). This is not recommended for production use in most cases.
 - **routeLearn** - This version has an LLM classify it, while embedding it and adding it to the training data. It allows you to train your model and recursively improve it as users use it. Same price as *manual*.
+
+In our case, we will choose to just use simple and easy routing.
+```python
+while True:
+    query = input("~ ")
+    print("\n" + myRouter.route(query)["output"] + "\n")
+```

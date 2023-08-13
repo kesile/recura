@@ -5,7 +5,6 @@ Here are some example cases in which this will be useful. An implementation will
 ### Navigational Chatbot
 
 A while ago, one of the projects I was building was a navigational chatbot. It needed to be able to identify the question to direct it to various handling systems. 
-<details><summary>Code Implementation</summary>
 ```python
 navRouter = Tear(API_KEY)
 buckets = {
@@ -27,7 +26,6 @@ while True:
     query = input("~ ")
     print("\n" + navRouter.route(query)["output"] + "\n")
 ```
-</details>
 
 ### Customer Support
 

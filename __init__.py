@@ -1,1 +1,1 @@
-from Tear.main import Router
+from TearRouting.main import Tear

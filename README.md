@@ -1,5 +1,5 @@
 # Tear - Trainable, autonomous, efficient routing.
-Tear is a simple tool that allows you to easily (<10 lines of code) and cheaply control the flow of information through LLM chains via automated classification. It provides routing via two methods, LLMs and Embeddings. Furthermore, you can train an LLM on a set of question and use embeddings thereafter. Let's demonstrate this by creating a simple, easy router for movie related questions.
+Tear is a simple tool that allows you to easily (<10 lines of code) and cheaply (500,000/1$) control the flow of information through LLM chains via automated classification. It provides routing via two methods, LLMs and Embeddings. Furthermore, you can train an LLM on a set of question and use embeddings thereafter. Let's demonstrate this by creating a simple, easy router for movie related questions.
 ## Use Case Examples
 Here are some example cases in which this will be useful. Example data will be provided. For an annotated implementation, see the Example Set-up that's below. As always, this is not an exhaustive list, and is rather just to make you think.
 ### Navigational Chatbot

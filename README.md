@@ -1,12 +1,11 @@
 # Tear - Trainable, autonomous, efficient routing.
 Tear is a simple tool that allows you to easily and cheaply control the flow of information through LLM chains via automated classification. It provides routing via two methods, LLMs and Embeddings. Furthermore, you can train an LLM on a set of question and use embeddings thereafter. Let's demonstrate this by creating a simple, easy router for movie related questions.
 ## Use Case Examples
-Here are some example cases in which this will be useful. An implementation will also be provided. For an annotated implementation, see the Example Set-up that's below.
+Here are some example cases in which this will be useful. Example data will be provided. For an annotated implementation, see the Example Set-up that's below.
 ### Navigational Chatbot
 
 A while ago, one of the projects I was building was a navigational chatbot. It needed to be able to identify the question to direct it to various handling systems. 
 ```python
-navRouter = Tear(API_KEY)
 buckets = {
     "general" : "General questions that don't fit any of the others.",
     "navigation" : "Questions about the navigation of a place (e.g. How do I get to 7/11? How do I get from FamilyMart to Mia C'bon?)",
@@ -17,14 +16,6 @@ trainingData = [
     "How do I get to 7/11?",
     # ... 99 more questions.
     ] 
-
-navRouter.addBuckets(buckets) # This will add the buckets (categories) to the router as available options.
-navRouter.wipe() # This is an optional step, but it will wipe any training data already written inside of the file.
-navRouter.train(trainingData, 20) # This will train it.
-
-while True:
-    query = input("~ ")
-    print("\n" + navRouter.route(query)["output"] + "\n")
 ```
 
 ### Customer Support

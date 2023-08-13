@@ -26,3 +26,5 @@ We will now create our training data. It can just be a list of questions.
 router.addBuckets(buckets) # This will add the buckets (categories) to the router as available options.
 router.wipe() # This is an optional step, but it will wipe any training data already written inside of the file.
 router.train(trainingData, 20) # This will train it. The number at the end is the batch size, which is the amount of concurrent requests at a time.
+```
+This will allow us to now train the router based on our added data.

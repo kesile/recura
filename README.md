@@ -23,18 +23,34 @@ trainingData = [
 You can also use a system like this for department-routing for customer support queries. Here's an example.
 ```python
 buckets = {
-    "general" : "General questions that don't fit any of the others.",
-    "navigation" : "Questions about the navigation of a place (e.g. How do I get to 7/11? How do I get from FamilyMart to Mia C'bon?)",
-    "reviews" : "Questions about the reviews of a place (e.g. How is Din Tai Fung? Is Sushiro any good?)",
+    "it" : "Questions for the IT department (e.g. My laptop is broken.)",
+    "sales" : "Questions for the sales department (e.g. How can I buy this? What do your enterprise deals look like?)",
+    "cs" : "Questions for the customer support department (e.g. I need a refund, now.)",
+    "escalation" : "Situations that must be escalated immediately (e.g. I'm in an emergency.)",
     }
 
 trainingData = [
-    "How do I get to 7/11?",
+    "Do you guys do bulk discounts?",
     # ... 99 more questions.
     ] 
 ```
 
 ### Multi-docu-query
+
+You can also use a system like this for department-routing for customer support queries. Here's an example.
+```python
+buckets = {
+    "it" : "Questions for the IT department (e.g. My laptop is broken.)",
+    "sales" : "Questions for the sales department (e.g. How can I buy this? What do your enterprise deals look like?)",
+    "cs" : "Questions for the customer support department (e.g. I need a refund, now.)",
+    "escalation" : "Situations that must be escalated immediately (e.g. I'm in an emergency.)",
+    }
+
+trainingData = [
+    "Do you guys do bulk discounts?",
+    # ... 99 more questions.
+    ] 
+```
 
 ## Example Set-up / Movies
 ```python

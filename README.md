@@ -4,7 +4,34 @@ Tear is a simple tool that allows you to easily and cheaply control the flow of 
 Here are some example cases in which this will be useful. An implementation will also be provided. For an annotated implementation, see the Example Set-up that's below.
 ### Navigational Chatbot
 
-A while ago, one of the projects I was building was a navigational chatbot. 
+A while ago, one of the projects I was building was a navigational chatbot. It needed to be able to identify the question to direct it to various handling systems. 
+<details><summary>Code Implementation</summary>
+```python
+navRouter = Tear(API_KEY)
+buckets = {
+    "general" : "General questions that don't fit any of the others.",
+    "navigation" : "Questions about the navigation of a place (e.g. How do I get to 7/11? How do I get from FamilyMart to Mia C'bon?)",
+    "reviews" : "Questions about the reviews of a place (e.g. How is Din Tai Fung? Is Sushiro any good?)",
+    }
+
+trainingData = [
+    "How do I get to 7/11?",
+    # ... 99 more questions.
+    ] 
+
+navRouter.addBuckets(buckets) # This will add the buckets (categories) to the router as available options.
+navRouter.wipe() # This is an optional step, but it will wipe any training data already written inside of the file.
+navRouter.train(trainingData, 20) # This will train it.
+
+while True:
+    query = input("~ ")
+    print("\n" + navRouter.route(query)["output"] + "\n")
+```
+</details>
+
+### Customer Support
+
+### Multi-docu-query
 
 ## Example Set-up / Movies
 ```python
